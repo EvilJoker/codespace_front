@@ -3,7 +3,7 @@
 {
 	"name": "front",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "ghcr.io/eviljoker/product_imagemagic_devcontainer:latest",
+	"image": "ghcr.io/eviljoker/codespace_front_devcontainer:latest",
 	"containerEnv": {
 		"https_proxy": "${localEnv:https_proxy}",
 		"http_proxy": "${localEnv:http_proxy}",
@@ -11,7 +11,7 @@
 		"all_proxy": "${localEnv:all_proxy}",
 		"ftp_proxy": "${localEnv:ftp_proxy}"
 	},
-	"postStartCommand": "bash ${CODESPACE_VSCODE_FOLDER}/.devcontainer/post_start.sh",
+	"postStartCommand": "bash /workspaces/codespace_front/.devcontainer/post_start.sh",
 	"runArgs": [
 		"--network",
 		"host"
@@ -20,8 +20,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"Codeium.codeium",
-				"esbenp.prettier-vscode"
+				"esbenp.prettier-vscode",
+				"Alibaba-Cloud.tongyi-lingma"
 			]
 		}
 	}

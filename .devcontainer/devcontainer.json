@@ -23,7 +23,7 @@
 		"all_proxy": "${localEnv:all_proxy}",
 		"ftp_proxy": "${localEnv:ftp_proxy}"
 },
-"postStartCommand": "bash ${PWD}/.devcontainer/post_start.sh",
+"postStartCommand": "bash /workspaces/codespace_front/.devcontainer/post_start.sh",
 "runArgs": [
 		"--network",
 		"host"
@@ -32,7 +32,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"esbenp.prettier-vscode"
+				"esbenp.prettier-vscode",
+				"Alibaba-Cloud.tongyi-lingma"
 			]
 		}
 	}
