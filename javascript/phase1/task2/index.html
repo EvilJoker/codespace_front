@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            My First Webpage
+        </title>
+    </head>
+
+    <body>
+        <script>
+            // var 生命全局的量
+            var vlaue // 值类型 undefined
+            var vlaue2 = null // 值类型 null
+            var vlaue3 = "Hello World!" // 值类型 string
+            // let 声明限定范围的变量
+            let vlaue4 = "Hello World!" // 值类型 string
+            // const 声明常量
+            const vlaue5 = "Hello World!" // 值类型 string
+
+            // 值类型：基本
+            var number_value = 100; /// number 数字
+            var boolean_value = true; // boolean
+            var string_value = "Hello World!"; // string
+            var null_value = null; // 空
+            var undefined_value = undefined; // 未定义
+            var symbol_value = Symbol("Hello World!"); // 表示独一无二的值
+
+            // 引用数据类型： 对象
+            var cars=new Array("sas", "sad");// array
+            var obj = {name:"johan", age:20, sex:"man"} // object
+            var func // 函数也是一种值
+            var age = 10
+
+
+            function myFunction() {
+                myage = "age: " + age++
+                alert(myage);
+                console.log(myage);
+            }
+            document.write("<h1>Hello World!</h1>");
+        </script>
+        <button type ="button" id="demo" onclick="myFunction()">尝试一下</button>
+    </body>
+</html>

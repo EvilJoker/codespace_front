@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            My First Webpage
+        </title>
+    </head>
+
+    <body>
+        <script>
+            class Person {
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                sayHello() {
+                    alert("Hello " + this.name + "!");
+                }
+            }   
+
+            function myFunction2() {
+                var person = new Person("John", 25);
+                person.sayHello();
+            }
+            var a = 100
+            var b = 200
+            function myFunction() {
+                c = a + b
+                document.getElementById("demo").innerHTML = c;
+            }
+            document.write("<h1>Hello World!</h1>");
+        </script>
+        <button type ="button" id="demo" onclick="myFunction()">尝试一下</button>
+        <button type ="button" id="demo" onclick="myFunction2()">尝试一下</button>
+    </body>
+</html>

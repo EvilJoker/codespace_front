@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            My First Webpage
+        </title>
+    </head>
+
+    <body>
+        <script>
+            function myFunction() {
+                var car =["ford", "toyota"]
+                for (car_name of car) {
+                    console.log(car_name)
+                }
+                var preson = {name:"jhno",age:10}
+
+                for (var key in preson) {
+                    console.log(key)
+                    console.log(preson[key])
+                }
+            }
+        </script>
+        <button type ="button" id="demo" onclick="myFunction()">尝试一下</button>
+    </body>
+</html>

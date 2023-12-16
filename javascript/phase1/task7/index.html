@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            My First Webpage
+        </title>
+    </head>
+
+    <body>
+        <script>
+            // 容器中调试路径会有问题，直接f5，或者open with edge 调试
+            function myFunction() {
+                dom = document.getElementById("demo")
+                dom.innerHTML = "Hello World!3"
+                dom.style.color = "red"
+                dom.style.fontSize = "30px"
+
+            }
+            
+        </script>
+        <button type ="button" id="demo" onclick="myFunction()">尝试一下</button>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            My First Webpage
+        </title>
+    </head>
+
+    <body>
+        <script>
+            function myFunction1() {
+                var is_man = true;
+                if (is_man) {
+                    alert("Hello Man!");
+                } else {
+                    alert("Hello Woman!");
+                }
+
+            }
+            function myFunction2() {
+                var fruit = "banana";
+                switch (fruit) {
+                    case "apple":
+                        alert("Hello Apple!");
+                        break;
+                    case "banana":
+                        alert("Hello Banana!");
+                        break;
+                    case "orange":
+                        alert("Hello Orange!");
+                        break;
+                    default:
+                        alert("Hello World!");
+                }
+
+                
+                
+            }
+            function myFunction3() {
+                for (var i = 0; i < 5; i++) {
+                    alert("Hello World!");
+                }
+            }
+            
+        </script>
+        <button type ="button" onclick="myFunction1()">尝试一下</button>
+        <button type ="button" onclick="myFunction2()">尝试一下</button>
+        <button type ="button" onclick="myFunction3()">尝试一下</button>
+    </body>
+    </body>
+</html>
