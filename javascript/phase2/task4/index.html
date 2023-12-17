@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        My First Webpage
+    </title>
+</head>
+
+<body>
+    <h1>
+        Hello World!
+    </h1>
+    <p>
+        This is my first webpage.
+    </p>
+    <p>
+        Here are some things I'm going to learn about coding:
+    </p>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    root = document.getRootNode()
+
+    var queue = [root]
+
+    while (queue.length > 0) {
+        let node = queue.shift()
+        if (node == null) {
+            continue
+        }
+
+        console.log(node.nodeName)
+        nodes = node.childNodes
+    
+
+        if (nodes.length > 0) {
+            // for (let i = 0; i < nodes.length; i++) {
+            //     queue.push(nodes[i])
+            // }
+            queue.push(...nodes)
+            // queue.concat(nodes)
+        }
+    }
+
+
+
+</script>
+
+</html>

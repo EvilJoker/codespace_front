@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        My First Webpage
+    </title>
+</head>
+
+<body>
+
+    <button type="button" id="demo" onclick="myFunction()">尝试一下</button>
+    <input type="text" id="in1">
+    <!-- <span id="in2"> -->
+    <input id="in3">
+    <script>
+        function myFunction() {
+            dom = document.getElementById("demo")
+            dom.innerHTML = "Hello World!3"
+            dom.style.color = "red"
+            dom.style.fontSize = "30px"
+
+        }
+
+        var input1 = document.getElementById("in1");
+        var input2 = document.getElementById("in2");
+        var input3 = document.getElementById("in3");
+        // change 是按下回车就触发
+        // input 实时触发
+        input1.addEventListener("input", function () {
+            var value1 = input1.value;
+            // input3.innerHTML = value1; // 适合 span 标签
+            input3.value = value1; // 适合 input 标签
+             
+            console.log(input1.value)
+        })
+
+    </script>
+
+</body>
+
+</html>

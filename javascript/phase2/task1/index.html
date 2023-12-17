@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+    <p id="a"> 段落一</p>
+    <p id="b" class="ok"> 段落一</p>
+    <p id="c" class="oo"> 段落一</p>
+    <p id="d" class="ok"> 段落一</p>
+    <p id="e" class="oo"> 段落一</p>
+    <p id="f" class="ok"> 段落一</p>
+</body>
+
+<script>
+   e1 = document.getElementById("a");
+   e1.style.color = "red";
+   // 获取多个
+   e2 = document.getElementsByClassName("oo");
+   for (var i = 0; i < e2.length; i++) {
+       e2[i].style.color = "blue";
+   }
+   // 通过 css 获取, 不加 All 只选中第一个
+   e3 = document.querySelectorAll(".ok");
+   for ( e of e3){
+       
+           e.style.color = "green";
+       
+   }
+
+
+</script>
+
+</html>

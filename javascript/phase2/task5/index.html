@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head> </head>
+
+<body>
+    <table>
+        <tr class="header">
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th class="hidden"><button class="add">+</button></th>
+            <th class="hidden"><button class="remove">-</button></th>
+        </tr>
+    </table>
+</body>
+<script>
+    document.addEventListener('click', function (event) {
+        target = event.target;
+
+
+
+        // 要插入兄弟节点需要，使用父节点 和 slib
+        // 事件委托，比使用 onclick 要好
+        
+        if (target.tagName == 'BUTTON' && target.classList.contains("add")) {
+            tr_parent = target.parentNode;
+            while (tr_parent.tagName != 'TR') {
+                tr_parent = tr_parent.parentNode;
+            }
+
+            table_parent = tr_parent.parentNode;
+            while (table_parent.tagName != 'TABLE') {
+                table_parent = table_parent.parentNode;
+            }
+
+            newtr = document.createElement('tr');
+            newtd1 = document.createElement('td')
+            newtd2 = document.createElement('td')
+            newtd3 = document.createElement('td')
+            // 按钮 +
+            newtd_add = document.createElement('td')
+            newtd_add.classList.add("hidden")
+            bewbt_add = document.createElement('button')
+            bewbt_add.innerHTML = "+"
+            bewbt_add.classList.add("add")
+            newtd_add.appendChild(bewbt_add);
+            // 按钮 -
+            newtd_remove = document.createElement('td')
+            newtd_remove.classList.add("hidden")
+            bewbt_remove = document.createElement('button')
+            bewbt_remove.innerHTML = "-"
+            bewbt_remove.classList.add("remove")
+            newtd_remove.appendChild(bewbt_remove);
+
+
+
+            newtr.appendChild(newtd1);
+            newtr.appendChild(newtd2);
+            newtr.appendChild(newtd3);
+            newtr.appendChild(newtd_add);
+            newtr.appendChild(newtd_remove);
+
+
+
+
+            tr_parent.parentNode.insertBefore(newtr, tr_parent.nextSibling);
+
+
+
+
+        }
+        if (target.tagName == 'BUTTON' && target.classList.contains("remove")) {
+            tr_parent = target.parentNode;
+            while (tr_parent.tagName != 'TR') {
+                tr_parent = tr_parent.parentNode;
+            }
+            if (!table_parent.classList.contains("header")) {
+                tr_parent.remove()
+            }
+        }
+
+    })
+
+</script>
+
+<style>
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    th {
+        border: 1px solid rgb(31, 48, 48);
+        background-color: rgb(31, 48, 48);
+        padding: 5px;
+        color: white;
+    }
+
+    td.hidden {
+        border: none;
+    }
+
+    button {
+        background-color: aquamarine;
+        color: black;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 10px;
+
+    }
+</style>
+
+</html>

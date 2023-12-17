@@ -1,0 +1,78 @@
+<!-- 使用 setimeout 实现定时回调 -->
+<!-- 使用 ajax 实现异步回调 -->
+<!-- 使用promise 实现异步回调 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>任务五</title>
+</head>
+
+<body>
+    <button type="button" id="add" onclick="add()">添加</button>
+    <input type="text" id="input" placeholder="请输入待办事项" , value="请输入待办事项"></input>
+    <!-- <button type="button" id="remove" onclick="remove()">删除</button> -->
+    <hr>
+    <ol></ol>
+
+
+
+
+</body>
+<script>
+
+    function add() {
+
+        var xmlhttp = new XMLHttpRequest();
+
+        // 定义服务端的逻辑，也就是回调函数
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+                // ajx 需要服务端的逻辑
+            }
+        }
+        xmlhttp.onerror = function () {
+            // 没有服务端，当返回错误时，执行也实现了逻辑
+
+            // 获取输入框的值
+            var input = document.querySelector('#input');
+            var ol_element = document.querySelector('ol');
+            content_value = input.value;
+            input.value = '请输入待办事项';
+
+            var li = document.createElement('li');
+            // 内容
+            var content = document.createElement('span');
+            content.innerHTML = content_value
+
+            li.appendChild(content);
+            // 删除按钮
+            var delete_button = document.createElement('button');
+            delete_button.innerHTML = '删除';
+            delete_button.onclick = function () {
+                li.remove();
+            }
+
+            li.appendChild(delete_button);
+
+            ol_element.appendChild(li);
+
+        }
+
+        xmlhttp.open("GET", "add.php?content=" + input.value, true);
+        xmlhttp.send();
+
+
+    }
+
+
+
+
+    // 使用回调函数实现
+
+
+</script>
+
+</html>

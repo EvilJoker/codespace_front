@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            My First Webpage
+        </title>
+    </head>
+    <body>
+        <h1>
+            Hello World!
+        </h1>
+        <p>
+            This is my first webpage.
+        </p>
+        <p>
+            Here are some things I'm going to learn about coding:
+        </p>
+        <div>
+            <label>输入新选项</label> 
+            <input type="text" id="new-item">
+            <button type="button" onclick="addNewItem()">添加</button>
+        </div>
+        <ul id="list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+        </ul>
+    </body>
+    <script>
+        var list = document.getElementById("list")
+        // 传入的事件, 获取所有 click 事件，
+        // 也可以在htMl 元素中 使用 onclick
+        document.addEventListener("click", function(event){
+            target = event.target
+            if (target.parentElement.id == "list" && target.tagName == "LI"){
+                target.remove()
+                // target.parentElement.removeChild(target)
+                console.log("删除了" + target.innerHTML)
+            }
+            
+            
+        })
+        function addNewItem(){
+            var input = document.getElementById("new-item")
+            // 创建 li
+            var li = document.createElement("li")
+            li.innerHTML = input.value
+            // 加入
+            list.appendChild(li)
+            input.value = ""
+        }
+
+
+
+
+    </script>
+</html>
