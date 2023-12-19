@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+            // jsx 语法，让你写 html 标签
+            // 第一个参数是要渲染的标签，第二个参数是要渲染的位置
+            <h1> Hello, world! </h1>,
+
+            document.getElementById('example')
+        )
+    </script>
+
+</body>
+
+</html>
