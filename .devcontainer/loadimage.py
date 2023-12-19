@@ -13,7 +13,7 @@ logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s -
 
 ip_desktop = "10.90.253.79"
 ip_198 = "10.90.30.198"
-image_name = "ghcr.io/eviljoker/product_imagemagic_devcontainer:latest"
+image_name = "ghcr.io/eviljoker/codespace_front_devcontainer:latest"
 
 
 # 198环境：直接 docker pull ghcr.io/eviljoker/codespace_kubernets_devcontainer:lates
@@ -32,6 +32,11 @@ def load_image_in_198():
 def load_image_in_desktop():
     logging.info("Loading image in desktop environment...")
     try:
+        # 在 198 环境执行 docker images 命令, 判断是不是最新的
+        pull_image_remote()
+        
+        
+        # 对比是不是最新的
         if compare_image_id(image_name) is True:
             logging.info("image  is latested")
             return
@@ -61,6 +66,15 @@ def load_image_in_desktop():
         logging.info("Image loaded successfully in desktop environment.")
     except subprocess.CalledProcessError as e:
         logging.info(f"Error loading image in desktop environment: {e.stderr}")
+
+def pull_image_remote():
+    process = subprocess.Popen(["ssh", "sunqiyuan@" + ip_198, f"docker pull {image_name}"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+    
+    for line in process.stdout:
+        logging.info(line.strip())
+    
+    process.wait()
+    
 
 
 def compare_image_id(image_name):
