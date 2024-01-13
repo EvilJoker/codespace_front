@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+
+
+    <!-- babel 是 jsx 的编译器 -->
+    <script type="text/babel">
+        // 事件： 就是 button 上的回调函数;或者事件委托:getElementById.addEventListener
+        // 目的：点击 click 弹出 显示 标签是 on 或者off 字段
+        // 实现 ： 通过 组件类，和 react 独有的 {}方式
+        // 注意： react 类默认不绑定 this，需要手动绑定
+
+        class Toggle extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    name: "john"
+                };
+                this.handleClick = this.handleClick.bind(this);
+            }
+            // 事件传递
+            handleClick(e) {
+                this.setState({
+                    name: e.target.value
+                });
+      
+            }
+
+
+            render() {
+                var name = this.state.name;
+                return (
+                    <div>
+                        <input type="text" value = {name} onChange ={this.handleClick}/>   ;
+                        <p> {name}</p>
+                    </div>
+                );
+
+            }
+
+        }
+        
+
+
+        ReactDOM.render(
+            <Toggle />,
+            document.getElementById('example')
+        );
+
+
+    </script>
+<!-- <input type="text" value={name} onChange={this.handleClick}> {name} </input> -->
+</body>
+
+</html>

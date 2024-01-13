@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+<body></body>
+
+<script>
+    // resolve 成功， reject 失败
+    promise = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            if (Math.random() > 0.5) {
+                resolve(Math.random())
+            } else {
+                reject(Math.random())
+            }
+        }, 2000);
+    });
+
+    promise.then(function(value) {
+        // 对应 reject 逻辑
+        console.log()
+    }).catch(function(reason) {
+        // 对应 resolve 逻辑
+        console.log()
+    }).finally(function() {
+        // 无论 resolve 还是 reject，都会执行
+        console.log()
+    });
+
+    // async 和 await 成对使用
+    function print(delay, message) {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log(message);
+                resolve();
+            }, delay);
+        });
+    }
+    // 定义一个异步函数
+
+    async function asyncFunc() {
+        await print(1000, 'hello');
+        await print(2000, 'world');
+    }
+
+</script>
+</html>

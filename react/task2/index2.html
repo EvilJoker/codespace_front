@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+
+
+    <!-- babel 是 jsx 的编译器 -->
+    <script type="text/babel">
+        // 实现表单： 表单元素 是input value 是值， onchange 是触发的回调函数
+        // 目的：获取表单的值，并显示出来
+        // 实现 ： 通过 组件类，和 react 独有的 {}方式
+        // 注意： react 类默认不绑定 this，需要手动绑定
+        class ReadDOM extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    name: "john"
+                };
+                this.handleInputChange = this.handleInputChange.bind(this);
+            }
+
+            handleInputChange(e) {
+                this.setState({
+                    name: e.target.value
+                });
+            }
+
+            render() {
+                var name = this.state.name;
+                return (
+                    <div>
+                        <input type="text" value={this.state.name} onChange={this.handleInputChange}></input>
+                        <h1>{this.state.name}</h1>
+                    </div>
+                );
+            }
+        }
+
+
+        ReactDOM.render(<ReadDOM />, document.getElementById('example'))
+
+
+
+
+
+
+    </script>
+    <!-- <input type="text" value={name} onChange={this.handleClick}> {name} </input> -->
+</body>
+
+</html>

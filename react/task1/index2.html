@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example">1</div>
+
+    <script type="text/babel">
+
+    function FormateDate(props){
+        return(<h1>{props.date.toLocaleTimeString()}</h1>)
+    }
+    function a (){
+        return new Date()
+    }
+
+    class Clock extends React.Component{
+
+        constructor(props){
+            super(props)
+            this.state={
+                date:new Date()
+            }
+        }
+
+        componentDidMount(){
+            setInterval(()=>{
+                this.state.date = a()
+                
+                
+            },1000)
+        }
+
+
+
+        render(){
+            return (<FormateDate date={this.state.date}/>);
+        }
+
+
+    }
+
+
+
+
+
+    ReactDOM.render(<Clock/>,  document.getElementById('example'))
+    
+    
+    </script>
+
+</body>
+
+</html>

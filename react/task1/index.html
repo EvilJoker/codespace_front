@@ -12,14 +12,52 @@
 <body>
 
     <div id="example"></div>
+    <div id="example1"></div>
+    <!-- babel 是 jsx 的编译器 -->
     <script type="text/babel">
-        ReactDOM.render(
-            // jsx 语法，让你写 html 标签
-            // 第一个参数是要渲染的标签，第二个参数是要渲染的位置
-            <h1> Hello, world! </h1>,
+        // task1: react 语法
+        // 1. ReactDOM.render 是渲染器
+        
+        // 2. 组件是react 复用代码的最小单位，不可以更改，但是可以重新渲染  --- 常用方法定时刷新 setInterval
+        function tick() {
+            
+            ReactDOM.render(
+                // jsx 语法，让你写 html 标签 -- 注意 jsx 应该在一个标签里
+                <div>
+                    <h1> Hello, world! </h1>
+                    <p>time is {new Date().toLocaleTimeString()}</p>
+                </div>, // 参数1是标签
+                document.getElementById('example') // 参数2 是定位
+            );
+        }
+        setInterval(tick, 1000)
+        // task 组件
+        // 改进组件版
 
-            document.getElementById('example')
-        )
+        function Clock(props) {
+            return (
+                <div>
+                    <h1>Hello, world!</h1>
+                    <p>
+                        Time: {props.date.toLocaleTimeString()}
+                    </p>
+                </div>
+            );
+        }
+
+        function tick2() {
+            ReactDOM.render(
+                <Clock date={new Date()} />, // 传入一个 日期
+                document.getElementById('example1')
+            );
+        }
+        setInterval(tick2, 1000)
+        // 样式： style / react 展开数组
+
+        // task3 state 和 props 的了解
+        
+
+
     </script>
 
 </body>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="todo"></div>
+
+
+
+    <!-- babel 是 jsx 的编译器 -->
+    <script type="text/babel">
+
+        // 事件处理
+        // 1. 事件绑定
+        // 2. 事件处理函数
+        // 3. 事件对象
+        // 4. 事件冒泡
+        // 5. 事件捕获
+        // 6. 事件委托
+        // 7. 事件代理
+        // 8. 事件委托
+
+        // 目的： 创建一个 待办事项 列表 可以删除，添加， 标记完成
+        // 实现 ： 
+        //   列表 ul; 添加 input; 标记完成 复选框，删除线； 删除 ，删除按钮
+        //  事项：内容，是否完成属性； 列表：元素是 事项；复选框：选中会更改事项的完成属性；删除按钮：点击会删除事项
+        // 注意： react 类默认不绑定 this，需要手动绑定
+
+        class TodoItem extends React.Component {
+            constructor(props) {
+                super(props);
+                this.removeItem = this.removeItem.bind(this);
+            }
+
+            removeItem(e) {
+                e.target.parentNode.remove()
+
+            }
+            render() {
+                return (
+                    <li >
+                        {// this.props.onChange 会调用父组件的 onchangge 函数，并将参数传给父组件
+                        }
+                        <input type="checkbox" checked={this.props.isDone} onChange={(e) => this.props.onChange(e.target.checked)} />
+                        {
+                            this.props.isDone ?<span style={{ textDecoration: 'line-through', color: 'red' }}>{this.props.text}</span>:<span>{this.props.text}</span>
+                        }
+
+                        <button onClick={this.removeItem}>-</button>
+                    </li>
+                );
+            }
+        }
+
+
+
+        class TodoList extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    todolist: [],
+                    input_text: ""
+                };
+
+                this.state.todolist.push({
+                    text: "吃饭",
+                    isDone: false
+                });
+                this.state.todolist.push({
+                    text: "吃饭",
+                    isDone: true
+                });
+
+
+                this.addItem = this.addItem.bind(this);
+                this.changeItemStatus = this.changeItemStatus.bind(this);
+
+            }
+
+            addItem(input_text, e) {
+                this.state.todolist.push({
+                    text: input_text,
+                    isDone: false
+                });
+
+
+                this.setState({
+                    todolist: this.state.todolist,
+                    input_text: ""
+                })
+
+            }
+            changeItemStatus(checked, index) {
+                console.log(checked, index)
+                this.state.todolist[index].isDone = checked;
+                this.setState({
+                    todolist: this.state.todolist
+                })
+
+
+
+            }
+
+
+            render() {
+                var input_text = this.state.input_text;
+                var todolist = this.state.todolist;
+                return (
+                    <div>
+                        <input type="text" value={input_text} onChange={(e) => this.setState({ input_text: e.target.value })} />
+                        <button onClick={this.addItem.bind(this, input_text)}>+</button>
+                        <br />
+                        <ol>
+                            {
+                                // value 参数从 子组件传上来，index 是当前组件
+                                todolist.map((item, index) => {
+                                    return <TodoItem key={index} isDone={item.isDone} text={item.text} onChange={(checked) => this.changeItemStatus(checked, index)}></TodoItem>
+                                })
+                            }
+
+
+                        </ol>
+
+                    </div>
+                );
+            }
+        }
+
+
+
+
+
+
+        ReactDOM.render(<TodoList />, document.getElementById('todo')
+        );
+
+
+    </script>
+
+</body>
+
+</html>

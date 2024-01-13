@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example">1</div>
+    <div id="example1">2</div>
+    <!-- babel 是 jsx 的编译器 -->
+    <script type="text/babel">
+        // task3 state 和 props 的了解
+        function FormattedDate(props){ // proos 是一个对象集合
+            return <h2> {props.date.toLocaleTimeString()} </h2>;
+        }
+
+        // state 是 组件的自身状态私有,可以变 只有组件自身可访问。  ---> 数据向下流动，只能影响自己的子组件
+        // props 是 组件的外部状态，不可变 任何组件都可以访问。  ---> 父组件将自己的state 通过 props 传递给子组件
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {date: new Date()}; // 之所以能更新，因为 state 被监控，可以实时更新
+            }
+
+            componentDidMount() {
+                this.timerID = setInterval(
+                    () => this.tick(),
+                    1000
+                );
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.timerID);
+            }   
+        }
+
+        // 类定义组件
+        class Clock extends React.Component {
+            constructor(props) { // 
+                super(props);
+                this.state = { // 对象
+                    date: new Date()
+                };
+            }
+
+            componentDidMount() {
+                // 组件挂载后，会调用这个方法
+                this.timerID = setInterval(
+                    () => this.tick(),
+                    1000
+                );
+            }
+            tick(){
+                this.setState({
+                    date: new Date()
+                });
+            
+            }
+
+            componentWillUnmount() {
+                // 组件卸载后，会调用这个方法
+                clearInterval(this.timerID);
+                
+            }
+
+            render() {
+                /* date 将作为 props 的属性*/ 
+                return (
+                    <div>
+                        <h1>Hello, world!</h1>
+
+                        <FormattedDate date={this.state.date} /> 
+                    </div>
+                );
+            }
+        }
+
+        
+
+        
+        // 渲染
+        ReactDOM.render(<Clock />, document.getElementById('example1'));
+
+
+        // task 生命周期
+        //  componentDidMount 第一次被加载
+        // componentWillUnmount 卸载
+     
+        
+
+    </script>
+
+</body>
+
+</html>
